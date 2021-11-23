@@ -1,5 +1,5 @@
 let output = document.querySelector('.result');
-let btn = document.querySelectorAll('button');
+let allBtn = document.querySelectorAll('button');
 let initialValue = 0;
 
 
@@ -12,16 +12,18 @@ function handleBtn(event) {
         output.innerText = eval(output.innerText);
         return;
     }
-    output.innerText += event.target.innerText;
-}
+    if(event.target.classList.contains("clear")) {
+        output.innerText = initialValue;
+        return;
+    }
+    if(output.innerText == initialValue){
+        output.innerText = event.target.innerText;
+    } else {
+        output.innerText += event.target.innerText;
+    }
+};
 
-btn.forEach(b => {
-    b.addEventListener('click', handleBtn)
+allBtn.forEach(btn => {
+    btn.addEventListener('click', handleBtn)
 });
 
-
-let clear = document.querySelector('#clear');
-
-clear.addEventListener('click', () => {
-    output.innerText = initialValue;
-});
