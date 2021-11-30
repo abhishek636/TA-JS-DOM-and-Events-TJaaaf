@@ -4,8 +4,50 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Rock Paper and Scissors</title>
+    <!--Google Fonts-->
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=New+Tegomin&display=swap"
+      rel="stylesheet"
+    />
+    <!--Stylesheets-->
+    <link rel="stylesheet" href="./style.css" />
+    <!--Font Awesome-->
+    <script
+      src="https://kit.fontawesome.com/5cc6fb9f6b.js"
+      crossorigin="anonymous"
+    ></script>
   </head>
+
   <body>
+    <main class="container board">
+      <header class="heading">
+        <h1>Rock Paper Scissors Lizard Spoke</h1>
+      </header>
+      <div class="you">
+        <h2>You - <span class="your-score">0</span></h2>
+        <div class="symbols flex">
+          <i class="far fa-hand-rock" data-text="rock"></i>
+          <i class="far fa-hand-paper" data-text="paper"></i>
+          <i class="far fa-hand-scissors" data-text="scissors"></i>
+          <i class="far fa-hand-lizard" data-text="lizard"></i>
+          <i class="far fa-hand-spock" data-text="spock"></i>
+        </div>
+      </div>
+      <div class="computer">
+        <h2>Computer - <span class="computer-score">0</span></h2>
+        <div class="symbols flex">
+          <i class="far fa-hand-rock" data-text="rock"></i>
+          <i class="far fa-hand-paper" data-text="paper"></i>
+          <i class="far fa-hand-scissors" data-text="scissors"></i>
+          <i class="far fa-hand-lizard" data-text="lizard"></i>
+          <i class="far fa-hand-spock" data-text="spock"></i>
+        </div>
+        <p>Let's Play!</p>
+      </div>
+      <button class="btn btn-primary"><i class="fas fa-sync-alt"></i></button>
+    </main>
+
     <script src="./script.js"></script>
   </body>
 </html>
