@@ -3,18 +3,20 @@ function main(){
 
     let root = document.querySelector("ul");
 
-    let allTodos = [];
+    let allTodos = JSON.parse(localStorage.getItem('todos')) || [];
 
     function handleToggle(event) {
+        localStorage.setItem('todos', JSON.stringify(allTodos));
         let id = event.target.dataset.id;
         allTodos[id].isDone = !allTodos[id].isDone;
-        createUI();
+        createUI(allTodos,root);
     }
 
     function handleDelete(event) {
+        localStorage.setItem('todos', JSON.stringify(allTodos));
         let id = event.target.dataset.id;
         allTodos.splice(id, 1);
-        createUI();
+        createUI(allTodos, root);
     }
 
     function createUI() {
@@ -49,8 +51,9 @@ function main(){
             allTodos.push(todo);
             event.target.value = "";
             localStorage.setItem("todo", JSON.stringify(allTodos));
-            createUI();
+            createUI(allTodos,root);
         }
+        localStorage.setItem('todos', JSON.stringify(allTodos));
     }
 
     inputText.addEventListener("keyup", handleInput);
