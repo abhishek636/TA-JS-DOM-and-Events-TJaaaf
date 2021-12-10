@@ -6,6 +6,46 @@ let parent = document.querySelector(".detail");
 
 let allTodos = JSON.parse(localStorage.getItem("todos")) || [];
 
+function createUI() {
+    root.innerHTML = "";
+    parent.innerHTML = "";
+    allTodos.forEach((todo, index) => {
+        let li = document.createElement("li");
+        li.classList.add("flex");
+        let div = document.createElement("div");
+        div.classList.add("flex");
+        let input = document.createElement("input");
+        input.type = "checkbox";
+        input.setAttribute("data-id", index);
+        input.checked = todo.isDone;
+        input.addEventListener("input", handleToggle);
+        let p = document.createElement("p");
+        p.innerText = todo.name;
+        let span = document.createElement("span");
+        span.innerText = "X";
+        span.setAttribute("data-id", index);
+        span.addEventListener("click", handleDelete);
+        div.append(input, p);
+        li.append(div, span);
+        root.append(li);
+    });
+    let div2 = document.createElement("div");
+    div2.classList.add("flex");
+    let p2 = document.createElement("p");
+    p2.innerText = allTodos.length + " items left";
+    let button1 = document.createElement("button");
+    button1.innerText = "ALL";
+    button1.addEventListener("click", handleAll);
+    let button2 = document.createElement("button");
+    button2.innerText = "Active";
+    button2.addEventListener("click", handleActive);
+    let button3 = document.createElement("button");
+    button3.innerText = "Completed";
+    button3.addEventListener("click", handleComplete);
+    div2.append(p2, button1, button2, button3);
+    parent.append(div2);
+}
+
 function handleToggle(event) {
     let id = event.target.dataset.id;
     allTodos[id].isDone = !allTodos[id].isDone;
@@ -66,49 +106,8 @@ function duplicateUI(arr) {
     });
 }
 
-function createUI() {
-    root.innerHTML = "";
-    parent.innerHTML = "";
-    allTodos.forEach((todo, index) => {
-        let li = document.createElement("li");
-        li.classList.add("flex");
-        let div = document.createElement("div");
-        div.classList.add("flex");
-        div.classList.add("justify");
-        let input = document.createElement("input");
-        input.type = "checkbox";
-        input.setAttribute("data-id", index);
-        input.checked = todo.isDone;
-        input.addEventListener("input", handleToggle);
-        let p = document.createElement("p");
-        p.innerText = todo.name;
-        let span = document.createElement("span");
-        span.innerText = "X";
-        span.setAttribute("data-id", index);
-        span.addEventListener("click", handleDelete);
-        div.append(input, p);
-        li.append(div, span);
-        root.append(li);
-    });
-    let div2 = document.createElement("div");
-    div2.classList.add("flex");
-    let p2 = document.createElement("p");
-    p2.innerText = allTodos.length + " items left";
-    let button1 = document.createElement("button");
-    button1.innerText = "ALL";
-    button1.addEventListener("click", handleAll);
-    let button2 = document.createElement("button");
-    button2.innerText = "Active";
-    button2.addEventListener("click", handleActive);
-    let button3 = document.createElement("button");
-    button3.innerText = "Completed";
-    button3.addEventListener("click", handleComplete);
-    div2.append(p2, button1, button2, button3);
-    parent.append(div2);
-}
 
 function handleInput(event) {
-    console.log(event, allTodos);
     if (event.keyCode === 13 && event.target.value !== "") {
         let todo = { name: event.target.value, isDone: false,};
         allTodos.push(todo);
