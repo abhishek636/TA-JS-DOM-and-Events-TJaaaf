@@ -3,10 +3,124 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Chrome Extension</title>
-    <link rel="stylesheet" href="style.css" />
+    <!--Title-->
+    <title>New Tab</title>
+    <!--Stylesheets-->
+    <link rel="stylesheet" href="./style.css" />
+    <!--Google Fonts-->
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap"
+      rel="stylesheet"
+    />
+    <!--Font Awesome-->
+    <script
+      src="https://kit.fontawesome.com/5cc6fb9f6b.js"
+      crossorigin="anonymous"
+    ></script>
   </head>
+
   <body>
+
+    <main class="window relative">
+      <div class="container">
+
+        <h1></h1>
+
+        <section class="dateTime">
+          <div class="time">
+            <p>
+              <span id="hours">12</span>:<span id="min">00</span>:<span id="sec"
+                >00</span
+              >
+            </p>
+          </div>
+          
+          <div class="date">
+            <p>
+              <span id="day">Friday</span>, 
+              <span id="month">Jan</span>-
+              <span id="date">12</span>-
+              <span id="year">2020</span>
+            </p>
+          </div>
+        </section>
+      </div>
+
+      <blockquote class="quote fixed">
+        <i class="fas fa-quote-left"></i>
+        <span class="quoteText"></span>
+        <i class="fas fa-quote-right"></i>
+      </blockquote>
+
+      <!-- Customize your  -->
+      <div class="custom fixed flex justify-between align-start" style="display: none;"> 
+        <div>
+          <ul>
+            <li id="profile"><p>Profile</p></li>
+            <li id="general"><p>General</p></li>
+            <li id="theme"><p>Theme</p></li>
+            <li id="timeAndDate"><p>Time and Date</p></li>
+            <li id="bookmarks"><p>Bookmarks</p></li>
+            <li id="about"><p>About</p></li>
+            <li id="contact"><p>Contact</p></li>
+          </ul>
+        </div>
+        <i class="fas fa-caret-down tail fixed"></i>
+      </div>
+    </main>
+
+    <!--Button-->
+    <button class="setting fixed"><i class="fas fa-cog"></i></button>
+    <!--ToDo List-->
+    <div class="todo fixed">
+      <h2>TODO LIST</h2>
+      <div class="flex justify-between align-center">
+        <input
+          type="text"
+          id="text"
+          name="text"
+          placeholder="Add you todos !"
+        />
+        <span id="addTodo" class="flex justify-center align-center"
+          >&plus;</span
+        >
+      </div>
+
+      <ul class="ul"></ul>
+      <div class="flex justify-between align-center options margin">
+        <button id="all" class="btn btn-secondary">All</button>
+        <button id="completed" class="btn btn-secondary">Completed</button>
+        <button id="pending" class="btn btn-secondary">Pending</button>
+        <button id="clear" class="btn btn-secondary">Clear</button>
+      </div>
+    </div>
+
+    <!--Accounts-->
+    <nav class="accounts fixed">
+      <ul class="flex justify-between align-center">
+        <li>
+          <a href="https://github.com"
+            ><i class="fab fa-github-square"></i
+          ></a>
+        </li>
+        <li>
+          <a href="https://twitter.com/home"><i class="fab fa-twitter-square"></i></a>
+        </li>
+        <li>
+          <a href=""><i class="fab fa-linkedin"></i></a>
+        </li>
+        <li>
+          <a href=""><i class="fab fa-facebook-square"></i></a>
+        </li>
+        <li>
+          <a href=""><i class="fab fa-instagram-square"></i></a>
+        </li>
+      </ul>
+    </nav>
+
+    <script src="./data.js"
+    ></script>
     <script src="./script.js"></script>
   </body>
 </html>
